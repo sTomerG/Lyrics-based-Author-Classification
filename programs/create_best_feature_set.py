@@ -12,8 +12,11 @@ from sklearn.svm import LinearSVC
 
 import pandas as pd
 
+import warnings
 import argparse
 import pickle
+
+warnings.filterwarnings('ignore')
 
 class TextSelector(BaseEstimator, TransformerMixin): # https://www.kaggle.com/baghern/a-deep-dive-into-sklearn-pipelines
 
@@ -48,9 +51,9 @@ def parse():
 	parser = argparse.ArgumentParser(\
 		description='Optimizing the feature settings and writing it to a file. Select data set with -ds argument')
 	parser.add_argument('-ds','--dataset', type=str, metavar='', \
-		help="choose which data set to use: 'DADS', 'AAMDS','GBDS', 'CADSa' or 'CADSb", default='DADS')
+		help="choose which data set to use: 'DADS', 'AAMDS','GBDS', 'CADSa' or 'CADSb'", required=True)
 	parser.add_argument('-ow', '--overwrite', type=str2bool,metavar='', \
-		help="overwrite the previoulsy determined outcome, choose true or false", default=False)
+		help="overwrite the previoulsy determined outcome, choose true or false. Default is false", default=False)
 	return parser.parse_args()
 
 

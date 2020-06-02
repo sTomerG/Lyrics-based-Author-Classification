@@ -15,8 +15,11 @@ import seaborn as sn
 import pandas as pd
 import numpy as np
 
+import warnings
 import argparse
 import pickle
+
+warnings.filterwarnings('ignore')
 
 class TextSelector(BaseEstimator, TransformerMixin): # https://www.kaggle.com/baghern/a-deep-dive-into-sklearn-pipelines
 	
@@ -70,11 +73,11 @@ def parse():
 	parser.add_argument('-ds','--dataset', type=str, metavar='', \
 		help="choose which data set to use: 'DADS', 'AAMDS','GBDS', 'CADSa' or 'CADSb", required=True)
 	parser.add_argument('-v','--verses', type=str2bool, metavar='', \
-		help="Use verses in the training set, True means yes, False means no", default=True)
+		help="Use verses in the training set, True means yes, False means no. Default is true", default=True)
 	parser.add_argument('-c', '--c_value', type=float, metavar='', \
-		help="Set the C value to the entered number", default=1)
+		help="Set the C value to the entered number. Default is 1, 200 is suggested.", default=1)
 	parser.add_argument('-t', '--test', type=str, metavar='', \
-		help="choose which data set to use as test data: 'dev', 'test' or 'kvold'",default='test')
+		help="choose which data set to use as test data: 'dev', 'test' or 'kvold'. Default is 'test'",default='test')
 	return parser.parse_args()
 
 def get_x_and_y(args):

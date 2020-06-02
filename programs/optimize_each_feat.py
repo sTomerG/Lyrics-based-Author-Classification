@@ -10,10 +10,13 @@ from sklearn.pipeline import FeatureUnion, Pipeline
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.svm import LinearSVC
 
-
 import pandas as pd
+
+import warnings
 import argparse
 import pickle
+
+warnings.filterwarnings('ignore')
 
 def identity(x):
     return x
